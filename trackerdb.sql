@@ -59,7 +59,7 @@ SET SQL_MODE = '';
 GRANT USAGE ON *.* TO student@localhost;
  DROP USER student@localhost;
 SET SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
-CREATE USER 'student'@'localhost' IDENTIFIED BY 'DYWs8o';
+CREATE USER 'student'@'localhost' IDENTIFIED BY '@AvGm3X6.mE7Wx?e';
 
 GRANT SELECT, INSERT, TRIGGER, UPDATE, DELETE ON TABLE * TO 'student'@'localhost';
 
