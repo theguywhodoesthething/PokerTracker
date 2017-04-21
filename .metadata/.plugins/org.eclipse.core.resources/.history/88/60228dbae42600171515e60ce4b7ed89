@@ -27,7 +27,7 @@ public class Session {
 	@Column(name = "start_time")
 	private LocalDateTime startTime;
 
-	@Column(name = "end_time")
+	@Column(name = "end")
 	private LocalDateTime endTime;
 
 	private String game;

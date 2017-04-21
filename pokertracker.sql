@@ -5,15 +5,15 @@ SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 
 -- -----------------------------------------------------
--- Schema mydb
+-- Schema pokertracker
 -- -----------------------------------------------------
-DROP SCHEMA IF EXISTS `mydb` ;
+DROP SCHEMA IF EXISTS `pokertracker` ;
 
 -- -----------------------------------------------------
--- Schema mydb
+-- Schema pokertracker
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `mydb` DEFAULT CHARACTER SET utf8 ;
-USE `mydb` ;
+CREATE SCHEMA IF NOT EXISTS `pokertracker` DEFAULT CHARACTER SET utf8 ;
+USE `pokertracker` ;
 
 -- -----------------------------------------------------
 -- Table `session`
@@ -71,7 +71,7 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 -- Data for table `session`
 -- -----------------------------------------------------
 START TRANSACTION;
-USE `mydb`;
+USE `pokertracker`;
 INSERT INTO `session` (`id`, `buy_in`, `cash_out`, `start_time`, `end_time`, `game`, `location`, `notes`) VALUES (1, 200, 303, '\'2017-01-09 13:23:01\'', '\'2017-01-09 20:11:01\'', 'Texas Hold\'em', 'The Mirage', 'bink');
 INSERT INTO `session` (`id`, `buy_in`, `cash_out`, `start_time`, `end_time`, `game`, `location`, `notes`) VALUES (2, 525, 0, '\'2017-01-13 08:03:01\'', '\'2017-01-13 15:23:01\'', 'Texas Hold\'em', 'Caeser\'s Palace', 'donkey cracked AA to bust me');
 
@@ -82,7 +82,7 @@ COMMIT;
 -- Data for table `tournament`
 -- -----------------------------------------------------
 START TRANSACTION;
-USE `mydb`;
+USE `pokertracker`;
 INSERT INTO `tournament` (`id`, `number_players`, `in_money`, `place_finished`, `session_id`) VALUES (1, 93, false, 28, 2);
 
 COMMIT;

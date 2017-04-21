@@ -22,7 +22,7 @@ public class TrackerTest {
 
 	@Before
 	public void setUp() throws Exception {
-		emf = Persistence.createEntityManagerFactory("TrackerPU");
+		emf = Persistence.createEntityManagerFactory("QuizPU");
 		em = emf.createEntityManager();
 		session = em.find(Session.class, 2);
 		tournament = em.find(Tournament.class, 1);
@@ -30,7 +30,7 @@ public class TrackerTest {
 	
 	@Test
 	public void test_session() {
-		assertEquals(525, session.getBuyIn(), 0.001);
+		assertEquals(525, session.getBuyIn());
 	}
 	
 	@Test

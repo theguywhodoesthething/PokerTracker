@@ -10,7 +10,7 @@
 
 		<properties>
 		<!--  make connection to db  -->
-			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/pokertracker" />
+			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/pokertrackerdb" />
 			<property name="javax.persistence.jdbc.user" value="student" />
 			<property name="javax.persistence.jdbc.password" value="@AvGm3X6.mE7Wx?e" />
 			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />

@@ -30,7 +30,7 @@ public class TrackerTest {
 	
 	@Test
 	public void test_session() {
-		assertEquals(525, session.getBuyIn(), 0.001);
+		assertEquals(525, session.getBuyIn());
 	}
 	
 	@Test
