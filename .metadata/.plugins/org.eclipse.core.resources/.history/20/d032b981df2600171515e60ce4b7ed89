@@ -1,0 +1,32 @@
+package test;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+
+import org.junit.Before;
+
+import entities.Session;
+import entities.Tournament;
+
+public class TrackerTest {
+
+	private EntityManagerFactory emf = null;
+	private EntityManager em = null;
+	Tournament tournament = null;
+	Session session = null;
+
+	@Before
+	public void setUp() throws Exception {
+		emf = Persistence.createEntityManagerFactory("QuizPU");
+		em = emf.createEntityManager();
+	}
+	
+	@After
+	public void tearDown() throws Exception {
+		em.close();
+		emf.close();
+	}
+	
+
+}

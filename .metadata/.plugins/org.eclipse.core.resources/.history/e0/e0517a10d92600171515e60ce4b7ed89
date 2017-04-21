@@ -1,0 +1,9 @@
+package entities;
+
+@Entity
+public class Session {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int id;
+}

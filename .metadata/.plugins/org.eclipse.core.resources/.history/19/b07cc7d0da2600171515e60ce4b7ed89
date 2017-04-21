@@ -1,0 +1,19 @@
+package entities;
+
+@Entity
+public class Tournament {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int id;
+	
+	@Column(name = "number_players")
+	private int numberPlayers;
+	
+	@Column(name = "in_money")
+	private boolean inMoney;
+	
+	@Column(name = "place_finished")
+	private int placeFinished;
+
+}

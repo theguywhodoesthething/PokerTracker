@@ -1,0 +1,18 @@
+package test;
+
+import entities.Tournament;
+
+public class TrackerTest {
+
+	private EntityManagerFactory emf = null;
+	private EntityManager em = null;
+	Tournament tournament = null;
+	Session session = null;
+
+	@Before
+	public void setUp() throws Exception {
+		emf = Persistence.createEntityManagerFactory("QuizPU");
+		em = emf.createEntityManager();
+	}
+
+}
