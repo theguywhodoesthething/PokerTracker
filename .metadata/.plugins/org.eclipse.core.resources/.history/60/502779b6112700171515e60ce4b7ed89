@@ -1,0 +1,78 @@
+package test;
+
+import static org.junit.Assert.assertEquals;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+
+import entities.Location;
+import entities.Note;
+import entities.Session;
+import entities.Tournament;
+
+public class TrackerTest {
+
+	private EntityManagerFactory emf = null;
+	private EntityManager em = null;
+	Tournament tournament = null;
+	Session session = null;
+	Location location = null;
+	Note note = null;
+
+	@Before
+	public void setUp() throws Exception {
+		emf = Persistence.createEntityManagerFactory("TrackerPU");
+		em = emf.createEntityManager();
+		session = em.find(Session.class, 2);
+		tournament = em.find(Tournament.class, 1);
+		location = em.find(Location.class, 1);
+		note = em.find(Note.class, 1);
+	}
+	
+	@Test
+	public void test_session() {
+		assertEquals(525, session.getBuyIn(), 0.001);
+	}
+	
+	@Test
+	public void test_tournament() {
+		assertEquals(93, tournament.getNumberPlayers());
+		
+	}
+	
+	@Test
+	public void test_location() {
+		assertEquals("3400 S Las Vegas Blvd", location.getAddress());
+		
+	}
+	
+	@Test
+	public void test_note() {
+		assertEquals("Guy, bald, asian wearing a UT sweatshirt, if 3bet will 4bet any hand",
+				note.getText().trim());
+		
+	}
+	
+	@Test
+	public void test_session_tournament() {
+		assertEquals(28, session.getTournament().getPlaceFinished());
+	}
+	
+	@Test
+	public void test_tournament_session() {
+		assertEquals("Caeser's Palace", tournament.getSession().getLocation().getName());
+	}
+	
+	@After
+	public void tearDown() throws Exception {
+		em.close();
+		emf.close();
+	}
+	
+
+}

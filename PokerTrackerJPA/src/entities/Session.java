@@ -1,14 +1,20 @@
 package entities;
 
 import java.time.LocalDateTime;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
@@ -31,12 +37,18 @@ public class Session {
 	private LocalDateTime endTime;
 
 	private String game;
-	private String location;
-	private String notes;
 	
 	@OneToOne(mappedBy = "session")
 	@JsonManagedReference
 	private Tournament tournament;
+	
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "location_id")
+	private Location location;
+	
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "session")
+	@JsonManagedReference
+	private Set<Note> notes;
 
 	public Double getBuyIn() {
 		return buyIn;
@@ -78,22 +90,6 @@ public class Session {
 		this.game = game;
 	}
 
-	public String getLocation() {
-		return location;
-	}
-
-	public void setLocation(String location) {
-		this.location = location;
-	}
-
-	public String getNotes() {
-		return notes;
-	}
-
-	public void setNotes(String notes) {
-		this.notes = notes;
-	}
-
 	public int getId() {
 		return id;
 	}
@@ -105,5 +101,22 @@ public class Session {
 	public void setTournament(Tournament tournament) {
 		this.tournament = tournament;
 	}
+
+	public Location getLocation() {
+		return location;
+	}
+
+	public void setLocation(Location location) {
+		this.location = location;
+	}
+
+	public Set<Note> getNotes() {
+		return notes;
+	}
+
+	public void setNotes(Set<Note> notes) {
+		this.notes = notes;
+	}
+	
 
 }

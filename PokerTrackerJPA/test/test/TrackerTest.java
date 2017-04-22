@@ -10,6 +10,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import entities.Location;
+import entities.Note;
 import entities.Session;
 import entities.Tournament;
 
@@ -19,6 +21,8 @@ public class TrackerTest {
 	private EntityManager em = null;
 	Tournament tournament = null;
 	Session session = null;
+	Location location = null;
+	Note note = null;
 
 	@Before
 	public void setUp() throws Exception {
@@ -26,6 +30,8 @@ public class TrackerTest {
 		em = emf.createEntityManager();
 		session = em.find(Session.class, 2);
 		tournament = em.find(Tournament.class, 1);
+		location = em.find(Location.class, 1);
+		note = em.find(Note.class, 1);
 	}
 	
 	@Test
@@ -40,13 +46,46 @@ public class TrackerTest {
 	}
 	
 	@Test
+	public void test_location() {
+		assertEquals("3400 S Las Vegas Blvd", location.getAddress());
+		
+	}
+	
+	@Test
+	public void test_note() {
+		assertEquals("Guy, bald, asian wearing a UT sweatshirt, if 3bet will 4bet any hand",
+				note.getText().trim());
+		
+	}
+	
+	@Test
 	public void test_session_tournament() {
 		assertEquals(28, session.getTournament().getPlaceFinished());
 	}
 	
 	@Test
 	public void test_tournament_session() {
-		assertEquals("Caeser's Palace", tournament.getSession().getLocation());
+		assertEquals(525, tournament.getSession().getBuyIn(), 0.001);
+	}
+	
+	@Test
+	public void test_session_note() {
+		assertEquals(1, session.getNotes().size());
+	}
+	
+	@Test
+	public void test_note_session() {
+		assertEquals("2017-01-09T20:11:01", note.getSession().getEndTime().toString());
+	}
+	
+	@Test
+	public void test_session_location() {
+		assertEquals("Bellagio", session.getLocation().getName());
+	}
+	
+	@Test
+	public void test_location_session() {
+		assertEquals(1, location.getSessions().size());
 	}
 	
 	@After

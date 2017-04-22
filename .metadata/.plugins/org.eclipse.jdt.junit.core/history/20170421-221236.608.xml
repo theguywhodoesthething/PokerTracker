@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="TrackerTest (Failed Tests first)" project="PokerTrackerJPA" tests="6" started="6" failures="0" errors="0" ignored="0">
+  <testsuite name="test.TrackerTest" time="2.809">
+    <testcase name="test_tournament_session" classname="test.TrackerTest" time="2.045"/>
+    <testcase name="test_note" classname="test.TrackerTest" time="0.214"/>
+    <testcase name="test_session_tournament" classname="test.TrackerTest" time="0.138"/>
+    <testcase name="test_location" classname="test.TrackerTest" time="0.154"/>
+    <testcase name="test_session" classname="test.TrackerTest" time="0.141"/>
+    <testcase name="test_tournament" classname="test.TrackerTest" time="0.117"/>
+  </testsuite>
+</testrun>

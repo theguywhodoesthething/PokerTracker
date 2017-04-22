@@ -1,0 +1,16 @@
+package entities;
+
+import javax.persistence.Column;
+
+public class Note {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int id;
+	
+	private String text;
+	private LocalDateTime timestamp;
+	
+	@Column(name = "current_stack")
+	private int currentStack;
+}

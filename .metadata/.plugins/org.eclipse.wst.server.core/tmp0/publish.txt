@@ -1,5 +1,5 @@
 #Tomcat publish data
-#Fri Apr 21 20:40:39 MDT 2017
+#Sat Apr 22 10:28:54 MDT 2017
 org.eclipse.jst.j2ee.server\:PokerTrackerJPA=/Users/mattgmur/SD/Tools/apache-tomcat-8.0.41/wtpwebapps/PokerTracker/WEB-INF/lib/PokerTrackerJPA.jar
-org.eclipse.jst.j2ee.server\:/binary\:/Users/mattgmur/.gradle/caches/modules-2/files-2.1/org.springframework/spring-web/4.3.2.RELEASE/562b3b775b6e8e7113b5d23b21946f939658bd19/spring-web-4.3.2.RELEASE.jar=/Users/mattgmur/SD/Tools/apache-tomcat-8.0.41/wtpwebapps/PokerTracker/WEB-INF/lib/spring-web-4.3.2.RELEASE.jar
 org.eclipse.jst.j2ee.server\:PokerTracker=/Users/mattgmur/SD/Tools/apache-tomcat-8.0.41/wtpwebapps/PokerTracker
+org.eclipse.jst.j2ee.server\:/binary\:/Users/mattgmur/.gradle/caches/modules-2/files-2.1/org.springframework/spring-web/4.3.2.RELEASE/562b3b775b6e8e7113b5d23b21946f939658bd19/spring-web-4.3.2.RELEASE.jar=/Users/mattgmur/SD/Tools/apache-tomcat-8.0.41/wtpwebapps/PokerTracker/WEB-INF/lib/spring-web-4.3.2.RELEASE.jar

@@ -1,0 +1,122 @@
+package entities;
+
+import java.time.LocalDateTime;
+import java.util.Set;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
+@Entity
+public class Session {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int id;
+
+	@Column(name = "buy_in")
+	private Double buyIn;
+
+	@Column(name = "cash_out")
+	private Double cashOut;
+
+	@Column(name = "start_time")
+	private LocalDateTime startTime;
+
+	@Column(name = "end_time")
+	private LocalDateTime endTime;
+
+	private String game;
+	
+	@OneToOne(mappedBy = "session")
+	@JsonManagedReference
+	private Tournament tournament;
+	
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "location_id")
+	@JsonManagedReference
+	private Location location;
+	
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "session_id")
+	@JsonManagedReference
+	private Set<Note> notes;
+
+	public Double getBuyIn() {
+		return buyIn;
+	}
+
+	public void setBuyIn(Double buyIn) {
+		this.buyIn = buyIn;
+	}
+
+	public Double getCashOut() {
+		return cashOut;
+	}
+
+	public void setCashOut(Double cashOut) {
+		this.cashOut = cashOut;
+	}
+
+	public LocalDateTime getStartTime() {
+		return startTime;
+	}
+
+	public void setStartTime(LocalDateTime startTime) {
+		this.startTime = startTime;
+	}
+
+	public LocalDateTime getEndTime() {
+		return endTime;
+	}
+
+	public void setEndTime(LocalDateTime endTime) {
+		this.endTime = endTime;
+	}
+
+	public String getGame() {
+		return game;
+	}
+
+	public void setGame(String game) {
+		this.game = game;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public Tournament getTournament() {
+		return tournament;
+	}
+
+	public void setTournament(Tournament tournament) {
+		this.tournament = tournament;
+	}
+
+	public Location getLocation() {
+		return location;
+	}
+
+	public void setLocation(Location location) {
+		this.location = location;
+	}
+
+	public Set<Note> getNotes() {
+		return notes;
+	}
+
+	public void setNotes(Set<Note> notes) {
+		this.notes = notes;
+	}
+	
+
+}
