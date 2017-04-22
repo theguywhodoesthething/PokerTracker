@@ -1,5 +1,5 @@
-<div id='summary'></div>
-<table id="allSessions">
+<h1>Loaded</h1>
+<table id='allSessions'>
   <tr>
     <th>Profit</th>
     <th>Time Played</th>
@@ -9,5 +9,3 @@
     <th>Notes</th>
   </tr>
 </table>
-<button type="button" id="startSession">Start New Session</button>
-<div id="newSessionDiv"></div>

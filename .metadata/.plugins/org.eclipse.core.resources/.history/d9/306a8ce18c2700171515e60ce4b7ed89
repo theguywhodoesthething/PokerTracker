@@ -31,10 +31,10 @@ public class Session {
 	private Double cashOut;
 
 	@Column(name = "start_time")
-	private String startTime;
+	private LocalDateTime startTime;
 
 	@Column(name = "end_time")
-	private String endTime;
+	private LocalDateTime endTime;
 
 	private String game;
 	
@@ -66,19 +66,19 @@ public class Session {
 		this.cashOut = cashOut;
 	}
 
-	public String getStartTime() {
+	public LocalDateTime getStartTime() {
 		return startTime;
 	}
 
-	public void setStartTime(String startTime) {
+	public void setStartTime(LocalDateTime startTime) {
 		this.startTime = startTime;
 	}
 
-	public String getEndTime() {
+	public LocalDateTime getEndTime() {
 		return endTime;
 	}
 
-	public void setEndTime(String endTime) {
+	public void setEndTime(LocalDateTime endTime) {
 		this.endTime = endTime;
 	}
 

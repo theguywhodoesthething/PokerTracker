@@ -1,0 +1,75 @@
+$(document).ready(function() {
+    console.log('LOADED');
+});
+
+var buildDomSessions = function(data){
+  $('#content').load('session.html', function(){
+
+    var totalProfit = 0;
+    var totalTimePlayed = 0;
+
+    data.forEach(function(v,i,a){
+
+      var $newTr = $('<tr>');
+
+      var $profitTd = $('<td>');
+      var profit = v.buyIn - v.cashOut;
+      totalProfit += profit;
+      $profitTd.text(profit);
+
+      if(profit >= 0){
+        $profitTd.addClass('winningSession');
+      } else if (profit < 0) {
+        $profitTd.addClass('losingSession');
+      } else {
+        console.log('Error: profit is NaN');
+      }
+
+      var $timePlayedTd = $('<td>');
+      var timePlayed = v.startTime.getTime() - v.endTime.getTime();
+      totalTimePlayed += timePlayed;
+      $timePlayedTd.text(timePlayed);
+
+      var $tournament = $('<td>');
+
+      if(v.tournament){
+        $tournament.text('Yes');
+      } else {
+        $tournament.text('No');
+      }
+
+      var $game = $('<td>');
+      $game.text(v.game);
+
+      var $location = $('<td>');
+      $location.text(v.tournament.name);
+
+      var $notes = $('<td>');;
+      $notes.text(v.notes.length);
+
+      $newTr.append($profitTd, $timePlayedTd, $tournament, $game, $location, $notes);
+      $('#allSessions').append($newTr);
+
+    });
+
+    console.log(totalTimePlayed);
+    console.log(totalProfit);
+
+  });
+}
+
+// ######################### ajax requests #########################
+
+var ajaxGetSessions = function() {
+
+    $.ajax({
+        type: 'Get',
+        url: 'rest/sessions/',
+        dataType: 'json'
+    }).done(function(data, status) {
+        buildDomSessions(data);
+    }).fail(function(xhr, status, error) {
+        console.log(status + ": " + error);
+    });
+
+};

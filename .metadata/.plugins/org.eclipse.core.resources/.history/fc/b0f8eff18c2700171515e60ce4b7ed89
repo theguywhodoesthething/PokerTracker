@@ -20,7 +20,7 @@ public class Note {
 	private int id;
 
 	private String text;
-	private String timestamp;
+	private LocalDateTime timestamp;
 
 	@Column(name = "current_stack")
 	private int currentStack;
@@ -38,11 +38,11 @@ public class Note {
 		this.text = text;
 	}
 
-	public String getTimestamp() {
+	public LocalDateTime getTimestamp() {
 		return timestamp;
 	}
 
-	public void setTimestamp(String timestamp) {
+	public void setTimestamp(LocalDateTime timestamp) {
 		this.timestamp = timestamp;
 	}
 

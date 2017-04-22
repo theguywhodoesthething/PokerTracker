@@ -41,10 +41,9 @@ CREATE TABLE IF NOT EXISTS `session` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `buy_in` DECIMAL NULL,
   `cash_out` DECIMAL NULL,
-  `start_time` DATETIME NULL,
-  `end_time` DATETIME NULL,
+  `start_time` VARCHAR(45) NULL,
+  `end_time` VARCHAR(45) NULL,
   `game` VARCHAR(45) NULL,
-  `notes` VARCHAR(255) NULL,
   `location_id` INT NULL,
   PRIMARY KEY (`id`, `location_id`),
   UNIQUE INDEX `id_UNIQUE` (`id` ASC),
@@ -129,8 +128,8 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `pokertracker`;
-INSERT INTO `session` (`id`, `buy_in`, `cash_out`, `start_time`, `end_time`, `game`, `notes`, `location_id`) VALUES (1, 200, 303, '\'2017-01-09 13:23:01\'', '\'2017-01-09 20:11:01\'', 'Texas Hold\'em', 'bink', 1);
-INSERT INTO `session` (`id`, `buy_in`, `cash_out`, `start_time`, `end_time`, `game`, `notes`, `location_id`) VALUES (2, 525, 0, '\'2017-01-13 08:03:01\'', '\'2017-01-13 15:23:01\'', 'Texas Hold\'em', 'donkey cracked AA to bust me', 2);
+INSERT INTO `session` (`id`, `buy_in`, `cash_out`, `start_time`, `end_time`, `game`, `location_id`) VALUES (1, 200, 303, '2017-01-09 13:23:01', '2017-01-09 20:11:01', 'Texas Hold\'em', 1);
+INSERT INTO `session` (`id`, `buy_in`, `cash_out`, `start_time`, `end_time`, `game`, `location_id`) VALUES (2, 525, 0, '2017-01-13 08:03:01', '2017-01-13 15:23:01', 'Texas Hold\'em', 2);
 
 COMMIT;
 
@@ -150,8 +149,8 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `pokertracker`;
-INSERT INTO `note` (`id`, `text`, `timestamp`, `current_stack`, `session_id`) VALUES (1, 'Guy, bald, asian wearing a UT sweatshirt, if 3bet will 4bet any hand ', '\'2017-01-09 19:41:01\'', 350, 1);
-INSERT INTO `note` (`id`, `text`, `timestamp`, `current_stack`, `session_id`) VALUES (2, 'Found a chicken bone in my pad thai. Next time order the rueben.', '\'2017-01-09 17:47:01\'', 307, 1);
-INSERT INTO `note` (`id`, `text`, `timestamp`, `current_stack`, `session_id`) VALUES (3, 'Standard PFR is 5x BB.', '\'2017-01-13 11:07:01\'', 1500, 2);
+INSERT INTO `note` (`id`, `text`, `timestamp`, `current_stack`, `session_id`) VALUES (1, 'Guy, bald, asian wearing a UT sweatshirt, if 3bet will 4bet any hand ', '2017-01-09 19:41:01', 350, 1);
+INSERT INTO `note` (`id`, `text`, `timestamp`, `current_stack`, `session_id`) VALUES (2, 'Found a chicken bone in my pad thai. Next time order the rueben.', '2017-01-09 17:47:01', 307, 1);
+INSERT INTO `note` (`id`, `text`, `timestamp`, `current_stack`, `session_id`) VALUES (3, 'Standard PFR is 5x BB.', '2017-01-13 11:07:01', 1500, 2);
 
 COMMIT;
