@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;data.SessionDAOImpl&apos; to &apos;SessionDAO&apos;&#x0A;- Original project: &apos;PokerTracker&apos;&#x0A;- Original element: &apos;data.SessionDAOImpl&apos;&#x0A;- Renamed element: &apos;data.SessionDAO&apos;&#x0A;- Update references to refactored element&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;SessionDAOImpl&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;data{SessionDAOImpl.java[SessionDAOImpl" matchStrategy="1" name="SessionDAO" qualified="false" references="true" similarDeclarations="false" stamp="1492815770519" textual="false" version="1.0"/>
+</session>

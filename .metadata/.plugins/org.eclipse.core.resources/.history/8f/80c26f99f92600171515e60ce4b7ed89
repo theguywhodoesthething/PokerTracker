@@ -1,0 +1,46 @@
+package data;
+
+import java.util.List;
+
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
+import entities.Session;
+
+public class SessionDAOImpl implements SessionDAO {
+	
+	@PersistenceContext
+	private EntityManager em;
+
+	@Override
+	public List<Session> index() {
+
+		String query = "SELECT s FROM Session s";
+		return em.createNamedQuery(query, Session.class).getResultList();
+	}
+
+	@Override
+	public Session show(int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Session create(Session session) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Session update(int id, Session session) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean destroy(int id) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+}

@@ -1,0 +1,9 @@
+package controllers;
+
+@RestController
+public class SessionController {
+	
+	@Autowired
+	private SessionDAO sessionDao;
+
+}

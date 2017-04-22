@@ -1,0 +1,26 @@
+package controllers;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
+
+import data.SessionDAO;
+
+@RestController
+public class SessionController {
+	
+	@Autowired
+	private SessionDAO sessionDao;
+	
+	@RequestMapping(value = "ping", method = RequestMethod.GET)
+	public String ping(){
+		return "pong";
+	}
+	
+	@RequestMapping(value = "sessions", method = RequestMethod.GET)
+	public List<Session> index(){
+		return sessionDao.index();
+	}
+
+}

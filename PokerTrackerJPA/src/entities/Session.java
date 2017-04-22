@@ -19,10 +19,10 @@ public class Session {
 	private int id;
 
 	@Column(name = "buy_in")
-	private double buyIn;
+	private Double buyIn;
 
 	@Column(name = "cash_out")
-	private double cashOut;
+	private Double cashOut;
 
 	@Column(name = "start_time")
 	private LocalDateTime startTime;
@@ -38,19 +38,19 @@ public class Session {
 	@JsonManagedReference
 	private Tournament tournament;
 
-	public double getBuyIn() {
+	public Double getBuyIn() {
 		return buyIn;
 	}
 
-	public void setBuyIn(double buyIn) {
+	public void setBuyIn(Double buyIn) {
 		this.buyIn = buyIn;
 	}
 
-	public double getCashOut() {
+	public Double getCashOut() {
 		return cashOut;
 	}
 
-	public void setCashOut(double cashOut) {
+	public void setCashOut(Double cashOut) {
 		this.cashOut = cashOut;
 	}
 
