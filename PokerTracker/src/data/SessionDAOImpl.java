@@ -7,7 +7,6 @@ import javax.persistence.PersistenceContext;
 
 import org.springframework.transaction.annotation.Transactional;
 
-import entities.Location;
 import entities.Note;
 import entities.Session;
 
@@ -32,20 +31,17 @@ public class SessionDAOImpl implements SessionDAO {
 
 	@Override
 	public Session create(Session session) {
+		
+		em.persist(session);
 				
 		if(session.getTournament() != null){
 			em.persist(session.getTournament());
-		}
-		
-		if(session.getLocation().getId() <= 0){		
-			em.persist(session.getLocation());
 		}
 		
 		if(session.getNotes() != null){
 			em.persist(session.getNotes());
 		}
 		
-		em.persist(session);		
 		em.flush();
 		return session;
 	}
@@ -81,6 +77,10 @@ public class SessionDAOImpl implements SessionDAO {
 		
 		if(session.getLocation() != null){
 			managedSession.setLocation(session.getLocation());
+		}
+		
+		if(session.getIsActive() != null){
+			managedSession.setIsActive(session.getIsActive());
 		}
 		
 		if(session.getNotes() != null){

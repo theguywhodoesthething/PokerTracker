@@ -1,13 +1,35 @@
 <div id='summary'></div>
-<table id="allSessions">
-  <tr>
-    <th>Profit</th>
-    <th>Time Played</th>
-    <th>Tournament</th>
-    <th>Game</th>
-    <th>Location</th>
-    <th>Notes</th>
-  </tr>
-</table>
-<button type="button" id="startSession">Start New Session</button>
-<div id="newSessionDiv"></div>
+<div id='sessionTable'>
+    <table class="table table-hover">
+        <tr>
+            <th>Profit</th>
+            <th>Time Played</th>
+            <th>Tournament</th>
+            <th>Game</th>
+            <th>Blind</th>
+            <th>Location</th>
+            <th>Notes</th>
+        </tr>
+        <tbody id="allSessions">
+        </tbody>
+    </table>
+</div>
+
+<div id="activeGame">
+
+</div>
+
+<div id="newSessionDiv">
+    <form name="newSessionForm" id="newSessionForm">
+        <input type="number" name="buyIn" placeholder="Buy In">
+        <input type="text" name="game" placeholder="Game">
+        <input type="text" name="blinds" placeholder="Blinds">
+        <input type="text" name="location" placeholder="Location">
+        <p>Playing in a Tournament</p>
+        <input type="radio" id="radioYes" name="tournament">Yes</input>
+        <input type="radio" id="radioNo" name="tournament">No</input>
+        <input class="tournamentClass" type="number" name="startingStack" placeholder="Starting Stack">
+        <input class="tournamentClass" type="number" name="numberPlayers" placeholder="Number of Players">
+        <button type="button" class="btn btn-primary" id="startSessionButton">Start New Session</button>
+    </form>
+</div>

@@ -1,6 +1,5 @@
 package entities;
 
-import java.time.LocalDateTime;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -9,12 +8,10 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
@@ -37,15 +34,16 @@ public class Session {
 	private String endTime;
 
 	private String game;
+	private String location;
+	private String blinds;
+	
+	@Column(name = "is_active")
+	private Boolean isActive;
 	
 	@OneToOne(mappedBy = "session")
 	@JsonManagedReference
 	private Tournament tournament;
-	
-	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "location_id")
-	private Location location;
-	
+
 	@OneToMany(fetch = FetchType.EAGER, mappedBy = "session")
 	@JsonManagedReference
 	private Set<Note> notes;
@@ -102,11 +100,11 @@ public class Session {
 		this.tournament = tournament;
 	}
 
-	public Location getLocation() {
+	public String getLocation() {
 		return location;
 	}
 
-	public void setLocation(Location location) {
+	public void setLocation(String location) {
 		this.location = location;
 	}
 
@@ -117,6 +115,21 @@ public class Session {
 	public void setNotes(Set<Note> notes) {
 		this.notes = notes;
 	}
-	
 
+	public String getBlinds() {
+		return blinds;
+	}
+
+	public void setBlinds(String blinds) {
+		this.blinds = blinds;
+	}
+
+	public Boolean getIsActive() {
+		return isActive;
+	}
+
+	public void setIsActive(Boolean isActive) {
+		this.isActive = isActive;
+	}
+	
 }

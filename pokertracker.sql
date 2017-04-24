@@ -16,23 +16,6 @@ CREATE SCHEMA IF NOT EXISTS `pokertracker` DEFAULT CHARACTER SET utf8 ;
 USE `pokertracker` ;
 
 -- -----------------------------------------------------
--- Table `location`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `location` ;
-
-CREATE TABLE IF NOT EXISTS `location` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `name` VARCHAR(45) NULL,
-  `address` VARCHAR(45) NULL,
-  `city` VARCHAR(45) NULL,
-  `state` VARCHAR(2) NULL,
-  `zip` INT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE INDEX `id_UNIQUE` (`id` ASC))
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
 -- Table `session`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `session` ;
@@ -44,15 +27,11 @@ CREATE TABLE IF NOT EXISTS `session` (
   `start_time` VARCHAR(45) NULL,
   `end_time` VARCHAR(45) NULL,
   `game` VARCHAR(45) NULL,
-  `location_id` INT NULL,
-  PRIMARY KEY (`id`, `location_id`),
-  UNIQUE INDEX `id_UNIQUE` (`id` ASC),
-  INDEX `fk_session_location1_idx` (`location_id` ASC),
-  CONSTRAINT `fk_session_location1`
-    FOREIGN KEY (`location_id`)
-    REFERENCES `location` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+  `location` VARCHAR(45) NULL,
+  `blinds` VARCHAR(45) NULL,
+  `is_active` TINYINT(1) NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE INDEX `id_UNIQUE` (`id` ASC))
 ENGINE = InnoDB;
 
 
@@ -113,23 +92,12 @@ SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 
 -- -----------------------------------------------------
--- Data for table `location`
--- -----------------------------------------------------
-START TRANSACTION;
-USE `pokertracker`;
-INSERT INTO `location` (`id`, `name`, `address`, `city`, `state`, `zip`) VALUES (1, 'The Mirage', '3400 S Las Vegas Blvd', 'Las Vegas', 'NV', 89109);
-INSERT INTO `location` (`id`, `name`, `address`, `city`, `state`, `zip`) VALUES (2, 'Bellagio', '3600 S Las Vegas Blvd', 'Las Vegas', 'NV', 89109);
-
-COMMIT;
-
-
--- -----------------------------------------------------
 -- Data for table `session`
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `pokertracker`;
-INSERT INTO `session` (`id`, `buy_in`, `cash_out`, `start_time`, `end_time`, `game`, `location_id`) VALUES (1, 200, 303, '2017-01-09 13:23:01', '2017-01-09 20:11:01', 'Texas Hold\'em', 1);
-INSERT INTO `session` (`id`, `buy_in`, `cash_out`, `start_time`, `end_time`, `game`, `location_id`) VALUES (2, 525, 0, '2017-01-13 08:03:01', '2017-01-13 15:23:01', 'Texas Hold\'em', 2);
+INSERT INTO `session` (`id`, `buy_in`, `cash_out`, `start_time`, `end_time`, `game`, `location`, `blinds`, `is_active`) VALUES (1, 200, 303, '2017-01-09 13:23:01', '2017-01-09 20:11:01', 'Texas Hold\'em', 'The Mirage', '$1/$2', NULL);
+INSERT INTO `session` (`id`, `buy_in`, `cash_out`, `start_time`, `end_time`, `game`, `location`, `blinds`, `is_active`) VALUES (2, 525, 0, '2017-01-13 08:03:01', '2017-01-13 15:23:01', 'Texas Hold\'em', 'Bellagio', NULL, NULL);
 
 COMMIT;
 

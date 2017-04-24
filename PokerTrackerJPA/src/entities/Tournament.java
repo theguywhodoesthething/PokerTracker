@@ -27,6 +27,9 @@ public class Tournament {
 	@Column(name = "place_finished")
 	private int placeFinished;
 	
+	@Column(name = "starting_stack")
+	private int startingStack;
+	
 	@OneToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "session_id")
 	@JsonBackReference
@@ -66,6 +69,14 @@ public class Tournament {
 
 	public void setSession(Session session) {
 		this.session = session;
+	}
+
+	public int getStartingStack() {
+		return startingStack;
+	}
+
+	public void setStartingStack(int startingStack) {
+		this.startingStack = startingStack;
 	}
 
 }

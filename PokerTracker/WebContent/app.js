@@ -3,6 +3,8 @@ $(document).ready(function() {
     ajaxGetSessions();
 });
 
+// ######################### build DOM landing page #########################
+
 var buildDomSessions = function(data) {
 
     $('#content').empty();
@@ -12,56 +14,97 @@ var buildDomSessions = function(data) {
         var totalProfit = 0;
         var totalTimePlayed = 0;
 
+        // ######################### create list of finished sessions #########################
+
         data.forEach(function(v, i, a) {
 
-            var $newTr = $('<tr>');
+            if (!v.isActive) {
+                var $newTr = $('<tr>');
 
-            var $profitTd = $('<td>');
-            var profit = v.cashOut - v.buyIn;
-            totalProfit += profit;
-            $profitTd.text(parseInt(profit));
+                var $profitTd = $('<td>');
+                var profit = v.cashOut - v.buyIn;
+                totalProfit += profit;
+                $profitTd.text(parseInt(profit));
 
-            if (profit >= 0) {
-                $profitTd.addClass('winningSession');
-            } else if (profit < 0) {
-                $profitTd.addClass('losingSession');
+                if (profit >= 0) {
+                    $profitTd.addClass('winningSession');
+                } else if (profit < 0) {
+                    $profitTd.addClass('losingSession');
+                } else {
+                    console.log('Error: profit is NaN');
+                }
+
+                var $timePlayedTd = $('<td>');
+                var timePlayed = getTimePlayed(v.startTime, v.endTime);
+                totalTimePlayed += timePlayed;
+                $timePlayedTd.text(getHumanReadableTimePlayed(timePlayed));
+
+
+                var $tournament = $('<td>');
+
+                if (v.tournament) {
+                    $tournament.text('Yes');
+                } else {
+                    $tournament.text('No');
+                }
+
+                var $game = $('<td>');
+                $game.text(v.game);
+
+                var $blinds = $('<td>');
+                $blinds.text(v.blinds);
+
+                var $location = $('<td>');
+                $location.text(v.location);
+
+                var $notes = $('<td>');;
+                $notes.text(v.notes.length);
+
+                $newTr.append($profitTd, $timePlayedTd, $tournament, $game, $blinds, $location, $notes);
+                $('#allSessions').append($newTr);
+
+                $($newTr).on('click', function(e) {
+                    e.preventDefault();
+
+                    ajaxGetSessionById(v.id);
+                });
+
+                // ######################### add active sessions #########################
+
             } else {
-                console.log('Error: profit is NaN');
-            }
 
-            var $timePlayedTd = $('<td>');
-            var timePlayed = getTimePlayed(v.startTime, v.endTime);
-            totalTimePlayed += timePlayed;
-            $timePlayedTd.text(getHumanReadableTimePlayed(timePlayed));
+                $('#activeGame').load('activesession.html', function() {
 
+                    $('#game').append(v.game);
+                    $('#buyIn').append(v.buyIn);
+                    $('#location').append(v.location);
+                    $('#blinds').append(v.blinds);
+                    $('#startTime').append(v.startTime);
 
-            var $tournament = $('<td>');
+                    if (v.tournament !== null) {
+                        $('#activeGame').append('<p>Starting Stack: $' + v.tournament.startingStack + '</p>')
+                        $('#activeGame').append('<p>Number of Players: ' + v.tournament.numberPlayers + '</p>')
+                        $('#isTournament').append('<input type="text" name="inMoney" placeholder="In Money">');
+                        $('#isTournament').append('<input type="number" name="placeFinished" placeholder="Place Finished">');
+                    };
 
-            if (v.tournament) {
-                $tournament.text('Yes');
-            } else {
-                $tournament.text('No');
-            }
+                    $('#activeGame').append()
 
-            var $game = $('<td>');
-            $game.text(v.game);
+                    $('#endSession').on('click', function(e){
 
-            var $location = $('<td>');
-            $location.text(v.location.name);
+                      v.cashOut = $(endThisSession.cashOut).val();
+                      v.endTime = new Date();
+                      v.isActive = false;
 
-            var $notes = $('<td>');;
-            $notes.text(v.notes.length);
+                      ajaxPutSession(v);
 
-            $newTr.append($profitTd, $timePlayedTd, $tournament, $game, $location, $notes);
-            $('#allSessions').append($newTr);
+                    });
 
-            $($newTr).on('click', function(e) {
-                e.preventDefault();
-
-                ajaxGetSessionById(v.id);
-            });
-
+                });
+            };
         });
+
+        // ######################### create summary of sessions #########################
 
         var $totalProfit = $('<h3>Total Profit: $' + totalProfit + '</h3>');
 
@@ -81,14 +124,45 @@ var buildDomSessions = function(data) {
 
         $('#summary').append($totalProfit, $totalTimePlayed, $perHourProfit);
 
-        $('#startSession').on('click', function(e) {
+        // ######################### create form to start a new session #########################
+
+        $('#startSessionButton').on('click', function(e) {
             e.preventDefault();
 
-            $('#newSessionDiv').load('newsession.html', function() {});
+            var session = {
+                game: $(newSessionForm.game).val(),
+                buyIn: $(newSessionForm.buyIn).val(),
+                location: $(newSessionForm.location).val(),
+                blinds: $(newSessionForm.blinds).val(),
+                startTime: new Date(),
+                isActive: true
+            }
 
-            console.log("Loaded Form");
+            var ss = $(newSessionForm.startingStack).val();
+            var np = $(newSessionForm.numberPlayers).val();
+
+            if (ss !== "" || np !== "") {
+                var tournament = {
+                    startingStack: ss,
+                    numberPlayers: np,
+                }
+                session.tournament = tournament;
+            }
+
+            ajaxPostSession(session);
 
         });
+
+        $('.tournamentClass').hide();
+
+        $('#radioYes').on('click', function(e) {
+            $('.tournamentClass').show();
+        });
+
+        $('#radioNo').on('click', function(e) {
+            $('.tournamentClass').hide();
+        });
+
     });
 };
 
@@ -117,7 +191,7 @@ var buildDomViewSession = function(v) {
             $('#tournament').append('<p>In the Money: ' + v.tournament.inMoney + '</p>')
             $('#tournament').append('<p>Finished: ' + v.tournament.placeFinished + '</p>')
         } else {
-          $('#tournament').empty();
+            $('#tournament').empty();
         };
 
         if (v.notes.length > 0) {
@@ -126,7 +200,7 @@ var buildDomViewSession = function(v) {
                 $('#notes').append('<p>' + x.timestamp + ': ' + x.text);
             });
         } else {
-          $('#notes').empty();
+            $('#notes').empty();
         };
 
         $('#returnHome').on('click', function(e) {
@@ -179,6 +253,35 @@ var ajaxDeleteSessionById = function(id) {
     $.ajax({
         type: 'Delete',
         url: 'rest/sessions/' + id,
+    }).done(function() {
+        ajaxGetSessions();
+    }).fail(function(xhr, status, error) {
+        console.log(status + ": " + error);
+    });
+};
+
+var ajaxPostSession = function(session) {
+    $.ajax({
+        type: 'Post',
+        url: 'rest/sessions/',
+        dataType: 'json',
+        contentType: 'application/json',
+        data: JSON.stringify(session)
+    }).done(function() {
+        ajaxGetSessions();
+    }).fail(function(xhr, status, error) {
+        console.log(status + ": " + error);
+    });
+};
+
+var ajaxPutSession = function(session) {
+
+    $.ajax({
+        type: 'Put',
+        url: 'rest/sessions/' + session.id,
+        dataType: 'json',
+        contentType: 'application/json',
+        data: JSON.stringify(session)
     }).done(function() {
         ajaxGetSessions();
     }).fail(function(xhr, status, error) {

@@ -1,0 +1,24 @@
+.inlineDiv {
+  display: inline-block;
+}
+
+.winningSession {
+  color: green;
+}
+
+.losingSession {
+  color: red;
+}
+
+#content {
+  width: 80%;
+}
+
+#sessionTable {
+  width: 80%;
+}
+
+table, td, th {
+  border-style: solid;
+  border-width: thin;
+}
