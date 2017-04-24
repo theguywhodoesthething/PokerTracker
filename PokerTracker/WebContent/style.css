@@ -1,27 +1,29 @@
 .inlineDiv {
-  display: inline-block;
+    display: inline-block;
 }
 
 .winningSession {
-  color: green;
+    color: green;
 }
 
 .losingSession {
-  color: red;
+    color: red;
 }
 
 #content {
-  width: 80%;
+    width: 80%;
 }
 
 #sessionTable {
-  width: 80%;
+    width: 80%;
 }
 
 th {
-  text-align: center;
+    text-align: center;
 }
 
-.inlinDiv {
-  display: inline-block;
+.inlineDiv {
+    display: inline-block;
+    width: 200px;
+    margin: 1em;
 }

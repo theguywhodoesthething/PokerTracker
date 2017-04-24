@@ -20,16 +20,25 @@
 </div>
 
 <div id="newSessionDiv">
-    <form name="newSessionForm" id="newSessionForm">
+    <form name="newSessionForm" class="form-group" id="newSessionForm">
+      <div class="inlineDiv">
         <input type="number" name="buyIn" placeholder="Buy In">
         <input type="text" name="game" placeholder="Game">
+      </div>
+      <div class="inlineDiv">
         <input type="text" name="blinds" placeholder="Blinds">
         <input type="text" name="location" placeholder="Location">
-        <p>Playing in a Tournament</p>
-        <input type="radio" id="radioYes" name="tournament">Yes</input>
-        <input type="radio" id="radioNo" name="tournament">No</input>
+      </div>
+      <div class="inlineDiv">
         <input class="tournamentClass" type="number" name="startingStack" placeholder="Starting Stack">
         <input class="tournamentClass" type="number" name="numberPlayers" placeholder="Number of Players">
+      </div>
+        <span>
+        <p>Playing in a Tournament</p>
+        <input class="radio radio-inline" type="radio" id="radioYes" name="tournament">Yes</input>
+        <input class="radio radio-inline" type="radio" id="radioNo" name="tournament">No</input>
+        <div>
+
         <button type="button" class="btn btn-primary" id="startSessionButton">Start New Session</button>
-    </form>
+    </span>
 </div>

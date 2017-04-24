@@ -72,7 +72,6 @@ public class SessionDAOImpl implements SessionDAO {
 		}
 		
 		if(session.getTournament() != null) {
-			em.persist(session.getTournament());
 			managedSession.setTournament(session.getTournament());
 		}
 		

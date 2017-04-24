@@ -166,6 +166,86 @@ var buildDomSessions = function(data) {
     });
 };
 
+// ######################### buildDomEditSession #########################
+
+var buildDomEditSession = function(v) {
+
+    $('#content').empty();
+    $form = $('<form>');
+    $form.addClass('form-group');
+    $form.attr('name', 'editSessionForm');
+    $('#content').append($form);
+
+        $($form).append('<div><h3>Profit</h3>$' + (v.cashOut - v.buyIn) + '</div>');
+
+        var timePlayed = getHumanReadableTimePlayed(getTimePlayed(v.startTime, v.endTime));
+        $($form).append('<div><h3>Time played</h3>' + timePlayed + '</div>');
+
+        $($form).append('<input type="text" name="startTime" value="' + v.startTime + '">');
+        $($form).append('<input type="text" name="endTime" value="' + v.endTime + '">');
+        $($form).append('<input type="number" name="buyIn" value="' + v.buyIn + '">');
+        $($form).append('<input type="number" name="cashOut" value="' + v.cashOut + '">');
+        $($form).append('<input type="text" name="location" value="' + v.location + '">');
+        $($form).append('<input type="text" name="blinds" value="' + v.blinds + '">');
+        $($form).append('<input type="text" name="game" value="' + v.game + '">');
+
+        var $tournament = $('<div>');
+
+        if (v.tournament !== null) {
+            $($tournament).append('<input type="number" name="startingStack" value="'
+            + v.tournament.startingStack + '">')
+            $($tournament).append('<input type="number" name="numberPlayers" value="'
+            + v.tournament.numberPlayers + '">')
+            $($tournament).append('<input type="text" name="inMoney" value="'
+            + v.tournament.inMoney + '">')
+            $($tournament).append('<input type="number" name="placeFinished" value="'
+            + v.tournament.placeFinished + '">')
+            $form.append($tournament);
+        };
+
+        $form.append('<button type="button" class="btn btn-primary" id="returnHome">Return Home</button>');
+        $form.append('<button type="button" class="btn btn-primary" id="editSession">Submit Changes</button>');
+        $form.append('<button type="button" class="btn btn-danger" id="deleteSession">Delete This Session</button>');
+
+        $('#returnHome').on('click', function(e) {
+            e.preventDefault();
+            ajaxGetSessions();
+        });
+
+        $('#deleteSession').on('click', function(e) {
+            e.preventDefault();
+            ajaxDeleteSessionById(v.id);
+        });
+
+        $('#editSession').on('click', function(e) {
+            e.preventDefault();
+
+            var session = {
+                id: v.id,
+                buyIn: $(editSessionForm.buyIn).val(),
+                cashOut: $(editSessionForm.cashOut).val(),
+                startTime: $(editSessionForm.startTime).val(),
+                endTime: $(editSessionForm.endTime).val(),
+                location: $(editSessionForm.location).val(),
+                blinds: $(editSessionForm.blinds).val(),
+                game: $(editSessionForm.game).val(),
+                isActive: false
+            }
+
+            if (v.tournament !== null) {
+                var tournament = {
+                    startingStack: $(editSessionForm.startingStack).val(),
+                    numberPlayers: $(editSessionForm.numberPlayers).val(),
+                }
+                session.tournament = tournament;
+            }
+            
+            ajaxPutSession(session);
+
+        });
+
+};
+
 // ######################### buildDomSingleSession #########################
 
 var buildDomViewSession = function(v) {
@@ -215,7 +295,7 @@ var buildDomViewSession = function(v) {
 
         $('#editSession').on('click', function(e) {
             e.preventDefault();
-            console.log("edit button clicked");
+            buildDomEditSession(v);
         });
 
     });
