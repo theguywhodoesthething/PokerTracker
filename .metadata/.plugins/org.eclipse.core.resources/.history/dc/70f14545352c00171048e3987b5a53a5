@@ -1,0 +1,27 @@
+angular.module('pokerTracker').component('summaryTracker', {
+    templateUrl: "app/pokerTracker/summaryTracker/summaryTracker.component.html",
+    controller: function(trackerService, $filter) {
+
+        var vm = this;
+        vm.summary = [];
+
+        vm.reload = function() {
+        	trackerService.index().then(function(res){
+        		vm.summary = res.data;
+        	});
+        };
+        
+        vm.reload();
+        
+        vm.getTotalTimePlayed = function(ses){
+        	var time = (new Date(ses.endTime) - new Date(ses.startTime))/60000;
+        	
+        	var minutes = time%60;
+        	var hours = parseInt(time/60);
+        	
+        	return hours + " hrs "  + minutes + " mins";
+        }
+
+    },
+    controllerAs: 'vm'
+});

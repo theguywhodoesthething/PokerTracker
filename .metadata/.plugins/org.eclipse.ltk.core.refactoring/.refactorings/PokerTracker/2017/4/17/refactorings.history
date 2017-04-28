@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Move 7 elements to &apos;jquery&apos;&#x0A;- Original project: &apos;PokerTracker&apos;&#x0A;- Destination element: &apos;jquery&apos;&#x0A;- Original elements:&#x0A;     style.css&#x0A;     viewsession.html&#x0A;     editsession.html&#x0A;     index.html&#x0A;     app.js&#x0A;     session.html&#x0A;     activesession.html&#x0A;- Update references to refactored element" description="Move files" element1="WebContent/style.css" element2="WebContent/viewsession.html" element3="WebContent/editsession.html" element4="WebContent/index.html" element5="WebContent/app.js" element6="WebContent/session.html" element7="WebContent/activesession.html" files="7" flags="589830" folders="0" id="org.eclipse.jdt.ui.move" policy="org.eclipse.jdt.ui.moveResources" qualified="false" references="true" stamp="1493342421872" target="WebContent/jquery" units="0" version="1.0"/>
+</session>

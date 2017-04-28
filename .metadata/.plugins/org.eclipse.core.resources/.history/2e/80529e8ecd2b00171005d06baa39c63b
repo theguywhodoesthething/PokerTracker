@@ -1,0 +1,19 @@
+angular.module('pokerTracker').component('summaryTracker', {
+    templateUrl: "app/pokerTracker/summaryTracker/summaryTracker.component.html",
+    controller: function(trackerService) {
+
+        var vm = this;
+        vm.summary = [];
+
+        vm.reload = function() {
+        	trackerService.index().then(function(res){
+        		vm.summary = res.data;
+        	});
+        };
+        
+        vm.summary = vm.reload();
+        
+
+    },
+    controllerAs: 'vm'
+});

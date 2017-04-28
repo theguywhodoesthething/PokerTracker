@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang='en' ng-app="appModule">
+  <head>
+    <meta charset="utf-8">
+    <title>Poker Tracker</title>
+    <script src="js/angular.min.js"></script>
+    <script src="app/pokerTracker/pokerTracker.module.js"></script>
+    <script src="app/pokerTracker/trackerService.service.js"></script>
+    <script src="app/appModule/appComponent/app.component.js"></script>
+    <script src="app/appModule/app.module.js"></script>
+    <script src="app/pokerTracker/sessionTracker/sessionTracker.component.js"></script>
+    <script src="app/pokerTracker/summaryTracker/summaryTracker.component.js"></script>
+  </head>
+  <body>
+    <app-component>Testing...</app-component>
+  </body>
+</html>

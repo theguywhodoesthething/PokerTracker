@@ -1,0 +1,5 @@
+angular.module('pokerTracker').component('summaryTracker', {
+    templateUrl: "app/pokerTracker/summaryTracker/summaryTracker.component.html",
+    controller: function(pokemonService) {
+        var vm = this;
+        vm.pokemons = [];

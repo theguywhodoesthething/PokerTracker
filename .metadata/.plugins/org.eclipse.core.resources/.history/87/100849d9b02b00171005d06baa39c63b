@@ -1,0 +1,15 @@
+<div id="game">
+    <h3>Game</h3></div>
+<div id="buyIn">
+    <h3>Buy In</h3></div>
+<div id="location">
+    <h3>Location</h3></div>
+<div id="blinds">
+    <h3>Blinds</h3></div>
+<div id="startTime">
+    <h3>Started At</h3></div>
+<form id="endThisSession">
+<input type="number" name="cashOut" placeholder="Cash Out">
+<div id="isTournament"></div>
+<button type="button" class="btn btn-primary" id="endSession">End This Session</button>
+</form>
