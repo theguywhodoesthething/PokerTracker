@@ -1,0 +1,1 @@
+<button type="button" ng-click="vm.startNewSession()">Start a New Session</button>

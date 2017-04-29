@@ -17,10 +17,11 @@ public class SessionDAOImpl implements SessionDAO {
 	private EntityManager em;
 
 	@Override
-	public List<Session> index() {
+	public List<Session> index(boolean active) {
 
-		String query = "SELECT s FROM Session s";
-		return em.createQuery(query, Session.class).getResultList();
+		String query = "SELECT s FROM Session s WHERE is_active = :active";
+		return em.createQuery(query, Session.class)
+				.setParameter("active", active).getResultList();
 	}
 
 	@Override

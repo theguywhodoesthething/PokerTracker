@@ -6,7 +6,7 @@ angular.module('pokerTracker').component('summaryTracker', {
         vm.summary = [];
 
         vm.reload = function() {
-        	trackerService.index().then(function(res){
+        	trackerService.index(true).then(function(res){
         		vm.summary = res.data;
         	});
         };

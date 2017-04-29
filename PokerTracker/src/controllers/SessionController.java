@@ -27,9 +27,10 @@ public class SessionController {
 		return "pong";
 	}
 
-	@RequestMapping(value = "sessions", method = RequestMethod.GET)
-	public List<Session> index() {
-		return sessionDao.index();
+	@RequestMapping(value = "sessions/active/{active}", method = RequestMethod.GET)
+	public List<Session> index(@PathVariable boolean active) {
+
+		return sessionDao.index(active);
 	}
 
 	@RequestMapping(value = "sessions/{id}", method = RequestMethod.GET)

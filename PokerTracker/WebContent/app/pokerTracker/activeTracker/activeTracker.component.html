@@ -1,0 +1,30 @@
+<span>
+	<a href="#/summary">Summary</a>
+	<a href="#/">Home</a>
+	<a href="#/active">Active Sessions</a>
+</span>
+<div ng-repeat="s in vm.activeSessions">
+<h2>{{s.startTime}}<h1>
+<div ng-repeat="n in s.notes">
+<p>{{n.timestamp | date:'short'}}: {{n.text}}</p>
+<form>
+<input type='textarea' ng-model="n.text" placeholder="Add a new note">
+<input type='submit' value="Add Note" ng-click="n.sessionId = s.id; vm.addNote(n)">
+</form>
+</div>
+<hr>
+<form>
+        Tournament? <input type='checkbox' ng-click="isTournament">
+        <div ng-show="vm.isTournament">In the money? <input type='checkbox' ng-model="s.tournament.inMoney"></div>
+        <input type='number' ng-show="vm.isTournament" ng-model="s.tournament.numberPlayers" placeholder='Number of Players'>
+        <input type='number' ng-show="vm.isTournament" ng-model="s.tournament.placeFinished" placeholder='Place Finished'>
+        <input type='number' ng-model="s.buyIn" placeholder='Buy In'>
+        <input type='number' ng-model="s.cashOut" placeholder='Cash Out'>
+        <input type='text' ng-model="s.game" placeholder='Game'>
+        <input type='text' ng-show="!vm.isTournament" ng-model="s.blinds" placeholder='Blinds'>
+        <input type='text' ng-model="s.location" placeholder='Location'>        
+        <input type="submit" value="Save" ng-click="vm.saveSession(s)">
+        <input type="submit" value="Save & End Session" ng-click="vm.endSession(s)">
+        <th>Notes</th>
+</form>
+</div>

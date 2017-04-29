@@ -1,0 +1,8 @@
+angular.module('pokerTracker').component('sessionTracker',{
+	templateUrl : "app/pokerTracker/sessionTracker/sessionTracker.component.html",
+	controller : function(trackerService, $filter) {
+		var vm = this;
+		
+	},
+	controllerAs: 'vm'
+});

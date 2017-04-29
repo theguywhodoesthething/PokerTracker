@@ -6,7 +6,7 @@ import entities.Session;
 
 public interface SessionDAO {
 	
-	public List<Session> index();
+	public List<Session> index(boolean active);
 	public Session show(int id);
 	public Session create(Session session);
 	public Session update(int id, Session session);

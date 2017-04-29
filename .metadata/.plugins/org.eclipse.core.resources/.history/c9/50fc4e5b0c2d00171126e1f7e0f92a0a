@@ -1,0 +1,26 @@
+angular.module('pokerTracker').component('sessionTracker',{
+	templateUrl : "app/pokerTracker/activeTracker/activeTracker.component.html",
+	controller : function(trackerService) {
+		var vm = this;
+		
+		vm.isTournament = false;
+		
+		vm.endSession = function(session){
+			session.isActive = false;
+			session.endTime = new Date();
+			tracker
+		};
+		
+		vm.saveSession = function(session){
+			session.isActive = false;
+			session.endTime = new Date();
+			tracker
+		};
+		
+		vm.addNote = function(note){
+			
+		};
+		
+	},
+	controllerAs: 'vm'
+});

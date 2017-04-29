@@ -1,0 +1,17 @@
+angular.module('appModule', [ 'pokerTracker', 'ngRoute' ]).config(
+		function($routeProvider) {
+			$routeProvider
+			.when('/', {
+				template : '<session-tracker></session-tracker>'
+			}).when('/about', {
+				template : '<about></about>'
+			}).when('/contact', {
+				template : '<contact></contact>'
+			}).when('/todo', {
+				template : '<todo-list></todo-list>'
+			}).when('/show/:id', {
+				template : '<todo-show></todo-show>'
+			}).otherwise({
+				template: '<error></error>'
+			})
+		});

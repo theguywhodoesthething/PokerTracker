@@ -1,0 +1,10 @@
+<div>
+<form>
+        Tournament? <input type='checkbox' ng-click="isTournament">
+        <input type='number' ng-model="newSession.cashOut" placeholder='Cash Out'>
+        <input type='text' ng-model="newSession.game" placeholder='Game'>
+        <input type='text' ng-model="newSession.blinds" placeholder='Blinds'>
+        <input type='text' ng-model="newSession.location" placeholder='Location'>
+        <th>Notes</th>
+</form>
+</div>
