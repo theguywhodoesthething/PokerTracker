@@ -1,5 +1,5 @@
 <p align="center">
-<img src="https://github.com/theguywhodoesthething/PokerTracker/blob/master/pokertracker.png"  width="300px" height="245px">
+<img src="https://github.com/theguywhodoesthething/PokerTracker/blob/master/pokertracker.png">
 
 # Summary
 Poker Tracker is an event logging app that allows the user to track profits over time spent at the poker table. The user is able to log in real time, activating a new session when they sit at a new game and closing the session when they are done playing. Poker Tracker is a RESTful full stack application with full CRUD capabilities. The backend is built utilizing Spring MVC, JPA, MySQL and is deployed to an Apache Tomcat 8 Server.. The frontend is built with Angular, HTML and CSS.
@@ -27,7 +27,7 @@ When opening the app, the user lands at a page with a simple nav bar and a butto
 ## Class Structure and Database Overview
 
 <p align="center">
-<img src="https://github.com/theguywhodoesthething/PokerTracker/blob/master/schema.png"  width="300px" height="245px">
+<img src="https://github.com/theguywhodoesthething/PokerTracker/blob/master/schema.png">
 
 ## Technologies Used
 - Javascript
