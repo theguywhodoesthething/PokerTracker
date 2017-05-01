@@ -1,0 +1,26 @@
+<div class="sumDiv">
+<p>Total Profit: <em>{{vm.totalProfit | currency}}</em></p>
+<p>Total Time Played: <em>{{vm.totalTime}}</em></p>
+</div>
+<div id="tableDiv" class="setWidth">
+<table class="table table-hover table-responsive">
+    <tr class="trHead">
+        <th>Profit</th>
+        <th>Time Played</th>
+        <th>Tournament</th>
+        <th>Game</th>
+        <th>Blinds</th>
+        <th>Location</th>
+        <th>Notes</th>
+    </tr>
+    <tr class="clickable" ng-repeat="s in vm.summary" ng-click="vm.showSession(s.id)">
+        <td>{{s.cashOut - s.buyIn}}</td>
+        <td>{{vm.getTotalTimePlayed(s)}}</td>
+        <td>{{ s.tournament.id ? 'Yes' : 'No' }}</td>
+        <td>{{s.game}}</td>
+        <td>{{s.blinds ? s.blinds : 'N/A'}}</td>
+        <td>{{s.location}}</td>
+        <td>{{s.notes.length}}</td>
+    </tr>
+</table>
+</div>

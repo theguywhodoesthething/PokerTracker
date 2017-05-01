@@ -1,0 +1,21 @@
+body { 
+    padding-top: 65px; 
+}
+
+.clickable {
+	cursor: pointer;
+}
+
+.sumDiv {
+	max-width: 95%;
+	text-align: right;
+}
+
+.trHead {
+	background-color: #cfe5ec;
+}
+
+.tableDiv {
+	margin: auto;
+	max-width: 95%;
+}

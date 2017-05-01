@@ -1,0 +1,8 @@
+body { 
+    padding-top: 65px; 
+}
+
+.startNewSession {
+	height: 50%
+	width: 50%
+}

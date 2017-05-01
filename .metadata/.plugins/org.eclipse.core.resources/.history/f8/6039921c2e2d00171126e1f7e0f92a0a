@@ -1,0 +1,14 @@
+<h1>{{vm.session.startTime}}</h1>
+<h1>{{vm.session.endTime}}</h1>
+<h1>{{vm.session.buyIn}}</h1>
+<h1>{{vm.session.cashOut}}</h1>
+<h1>{{vm.session.game}}</h1>
+<h1>{{vm.session.location}}</h1>
+<h1 ng-show="!vm.tournament">{{vm.session.tournament.inMoney ? 'Yes' : 'No'}}</h1>
+<h1 ng-show="!vm.tournament">{{vm.session.tournament.numberPlayers}}</h1>
+<h1 ng-show="!vm.tournament">{{vm.session.tournament.placeFinished}}</h1>
+<h1 ng-show="!vm.tournament">{{vm.session.tournament.startingStack}}</h1>
+
+<div ng-repeat="n in vm.notes">
+<h1>{{n.timestamp | date:'short'}}: {{n.text}}</h1>
+</div>

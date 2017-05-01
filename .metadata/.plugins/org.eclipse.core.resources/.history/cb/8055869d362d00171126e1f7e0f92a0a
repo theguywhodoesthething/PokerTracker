@@ -1,0 +1,49 @@
+angular.module('pokerTracker').component('activeTracker',{
+	templateUrl : "app/pokerTracker/activeTracker/activeTracker.component.html",
+	controller : function(trackerService) {
+		var vm = this;
+		
+		vm.isTournament = false;
+		vm.activeSessions = [];
+		vm.noActiveSessions = false;
+
+        vm.reload = function() {
+        	trackerService.index(true).then(function(res){
+        		vm.activeSessions = res.data;
+        		if(vm.activeSessions.length < 1){
+        			vm.noActiveSessions = true;
+        		}
+        	});
+        };
+        
+        vm.reload();
+		
+		vm.endSession = function(session){
+			session.isActive = false;
+			session.endTime = new Date();
+			session.notes = null;
+			trackerService.update(session);
+			vm.reload();
+			console.log(session);
+		};
+		
+		vm.saveSession = function(session){
+			console.log(session);
+			trackerService.update(session);
+			session.notes = null;
+			vm.reload();
+			console.log(session);
+		};
+		
+		vm.addNote = function(session, newNote){
+			newNote.timestamp = new Date();
+			note = [newNote];
+			session.notes = note;
+			trackerService.update(session);
+			console.log(session);
+			vm.reload();
+		};
+		
+	},
+	controllerAs: 'vm'
+});

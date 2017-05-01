@@ -1,0 +1,16 @@
+<p>Started at: {{vm.session.startTime | date:'medium'}}</p>
+<p>Ended at: {{vm.session.endTime | date:'medium'}}</p>
+<p>Buy in: {{vm.session.buyIn}}</p>
+<p>Cash out: {{vm.session.cashOut}}</p>
+<p>Game: {{vm.session.game}}</p>
+<p>Location: {{vm.session.location}}</p>
+<p ng-show="!vm.isTournament">Blinds: {{vm.session.blinds}}</p>
+<p ng-show="vm.isTournament">Finished in the Money: {{vm.session.tournament.inMoney ? 'Yes' : 'No'}}</p>
+<p ng-show="vm.isTournament">Number of Players: {{vm.session.tournament.numberPlayers}}</p>
+<p ng-show="vm.isTournament">Place Finished: {{vm.session.tournament.placeFinished}}</p>
+<p ng-show="vm.isTournament">Starting Stack: {{vm.session.tournament.startingStack}}</p>
+<p>Notes:</p>
+<div ng-repeat="n in vm.session.notes">
+<p>{{n.timestamp | date:'short'}}: {{n.text}}</p>
+</div>
+<button type="button" class="btn btn-primary btn-lg" ng-click="vm.editSession()">Edit Session</button>

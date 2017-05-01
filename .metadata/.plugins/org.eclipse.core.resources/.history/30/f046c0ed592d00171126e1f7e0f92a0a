@@ -1,0 +1,18 @@
+body { 
+    padding-top: 65px; 
+}
+
+.clickable {
+	cursor: pointer;
+}
+
+.sumDiv {
+	max-width: 95%;
+	text-align: right;
+}
+
+.trHead {
+	background-color: lightgrey;
+	border-top: thin;
+	border-bottom: thin;
+}

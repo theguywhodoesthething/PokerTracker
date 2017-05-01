@@ -1,0 +1,39 @@
+angular.module('pokerTracker').component('editSession',{
+	templateUrl : "app/pokerTracker/editSession/editSession.component.html",
+	controller : function(trackerService, $location, $routeParams) {
+		var vm = this;
+		
+		vm.isTournament = false;
+		vm.session = {};
+
+        vm.reload = function() {
+        	trackerService.show($routeParams.id).then(function(res){
+        		vm.session = res.data;
+	        	if(vm.session.tournament !== null){
+	        		vm.isTournament = true;
+	        	};
+        	});
+        };
+        
+        vm.reload();
+        
+		vm.deleteSession = function(){
+        	trackerService.delete($routeParams.id).then(function(res){
+        			$location.path('/summary');
+        	});
+		};
+		
+		vm.saveSession = function(){
+        	trackerService.update(vm.session).then(function(res){
+    			$location.path('/show' + $routeParams.id);
+        	});
+		};
+		
+		vm.revertSession = function(){
+			vm.reload();
+		};
+		
+	},
+	controllerAs: 'vm'
+});
+		

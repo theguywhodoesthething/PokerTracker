@@ -1,0 +1,12 @@
+
+<nav class="navbar navbar-default navbar-fixed-top">
+	<div class="container">
+		<a class="navbar-brand" href="#/">Poker Tracker</a>
+		<ul class="nav nav-tabs">
+			  <li role="presentation"><a href="#/">Start a New Session</a></li>
+			  <li role="presentation"><a href="#/summary">Summary</a></li>
+			  <li role="presentation"><a href="#/active">Active Sessions</a></li>
+		</ul>
+	</div>
+</nav>
+

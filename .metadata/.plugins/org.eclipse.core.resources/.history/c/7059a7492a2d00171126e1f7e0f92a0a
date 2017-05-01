@@ -1,0 +1,6 @@
+<span>
+	<a href="#/summary">Summary</a>
+	<a href="#/">Home</a>
+	<a href="#/active">Active Sessions</a>
+</span>
+<button type="button" ng-click="vm.startNewSession()">Start a New Session</button>

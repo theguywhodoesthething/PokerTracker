@@ -1,0 +1,37 @@
+<div ng-show="vm.noActiveSessions">
+<h1>You have no active sessions</h1>
+<a href="#/">Start a new session</a>
+</div>
+<div ng-repeat="s in vm.activeSessions">
+<h2>{{s.startTime | date:'medium'}}<h1>
+<div ng-repeat="n in s.notes">
+<p>{{n.timestamp | date:'short'}}: {{n.text}}</p>
+</div>
+<form>
+<textarea ng-model="n.text" placeholder="Add a new note"></textarea>
+<input type='submit' value="Add Note" ng-click="vm.addNote(s, n)">
+</form>
+<form>
+        Tournament? <input type='checkbox' ng-model="vm.isTournament" ng-change="vm.isTournament">
+        <div ng-show="vm.isTournament">
+        In the money? <input type='checkbox' ng-model="s.tournament.inMoney">
+        Number of Player: <input type='number' ng-model="s.tournament.numberPlayers"
+         value='s.tournament.numberPlayers ? s.tournament.numberPlayers : 0'>
+        Place Finished: <input type='number' ng-model="s.tournament.placeFinished" value='s.tournament.placeFinished'>
+        Starting Stack: <input type='number' ng-model="s.tournament.startingStack"
+         value='{{s.tournament.startingStack ? s.tournament.startingStack : 0}}'>
+        </div>
+        <div>
+        Buy in: <input type='number' ng-model="s.buyIn" value="{{s.buyIn ? s.buyIn : 0}}">
+        Cash out: <input type='number' ng-model="s.cashOut" value="{{s.cashOut ? s.cashOut : 0}}">
+        Game: <input type='text' ng-model="s.game" value='s.game'>
+        <div ng-show="!vm.isTournament">
+        Blinds: <input type='text' ng-model="s.blinds" value='s.blinds'>
+        </div>
+        Location: <input type='text' ng-model="s.location" value='s.location'>
+        </div> 
+        <input type="submit" value="Save" ng-click="vm.saveSession(s)">
+        <input type="submit" value="Save & End Session" ng-click="vm.endSession(s)">
+</form>
+<hr>
+</div>

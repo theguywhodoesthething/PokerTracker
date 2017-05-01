@@ -1,0 +1,4 @@
+<div class="container">
+<div type="button" id="newSesBtn" ng-click="vm.startNewSession()">Start a New Session</div>
+</div>
+

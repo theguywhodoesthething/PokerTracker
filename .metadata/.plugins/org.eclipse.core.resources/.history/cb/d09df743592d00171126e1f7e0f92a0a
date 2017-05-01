@@ -1,0 +1,12 @@
+body { 
+    padding-top: 65px; 
+}
+
+.clickable {
+	cursor: pointer;
+}
+
+.sumDiv {
+	max-width: 90%;
+	text-align: right;
+}

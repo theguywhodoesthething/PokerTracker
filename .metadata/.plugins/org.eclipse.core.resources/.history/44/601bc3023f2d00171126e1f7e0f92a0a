@@ -1,0 +1,9 @@
+
+<nav class="navbar navbar-default navbar-fixed-top">
+	<div class="container">
+		<a class="navbar-brand" href="#/">Poker Tracker</a>
+		<a href="#/">Home</a>
+		<a href="#/summary">Summary</a>
+		<a href="#/active">Active Sessions</a>
+	</div>
+</nav>

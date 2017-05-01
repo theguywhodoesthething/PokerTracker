@@ -1,0 +1,44 @@
+<div id='summary'></div>
+<div id='sessionTable'>
+    <table class="table table-hover">
+        <tr>
+            <th>Profit</th>
+            <th>Time Played</th>
+            <th>Tournament</th>
+            <th>Game</th>
+            <th>Blind</th>
+            <th>Location</th>
+            <th>Notes</th>
+        </tr>
+        <tbody id="allSessions">
+        </tbody>
+    </table>
+</div>
+
+<div id="activeGame">
+
+</div>
+
+<div id="newSessionDiv">
+    <form name="newSessionForm" class="form-group" id="newSessionForm">
+      <div class="inlineDiv">
+        <input type="number" name="buyIn" placeholder="Buy In">
+        <input type="text" name="game" placeholder="Game">
+      </div>
+      <div class="inlineDiv">
+        <input type="text" name="blinds" placeholder="Blinds">
+        <input type="text" name="location" placeholder="Location">
+      </div>
+      <div class="inlineDiv">
+        <input class="tournamentClass" type="number" name="startingStack" placeholder="Starting Stack">
+        <input class="tournamentClass" type="number" name="numberPlayers" placeholder="Number of Players">
+      </div>
+        <span>
+        <p>Playing in a Tournament</p>
+        <input class="radio radio-inline" type="radio" id="radioYes" name="tournament">Yes</input>
+        <input class="radio radio-inline" type="radio" id="radioNo" name="tournament">No</input>
+        <div>
+
+        <button type="button" class="btn btn-primary" id="startSessionButton">Start New Session</button>
+    </span>
+</div>

@@ -1,0 +1,8 @@
+angular.module('pokerTracker').component('editSession',{
+	templateUrl : "app/pokerTracker/editSession/editSession.component.html",
+	controller : function(trackerService, $routeParams) {
+		var vm = this;
+	},
+	controllerAs: 'vm'
+});
+		

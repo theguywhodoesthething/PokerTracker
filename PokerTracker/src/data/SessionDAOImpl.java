@@ -1,6 +1,7 @@
 package data;
 
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -85,14 +86,22 @@ public class SessionDAOImpl implements SessionDAO {
 			managedSession.setIsActive(session.getIsActive());
 		}
 		
+		if(session.getBlinds() != null){
+			managedSession.setBlinds(session.getBlinds());
+		}
+		
 		if(session.getNotes() != null){
-			session.getNotes().addAll(managedSession.getNotes());
-			managedSession.setNotes(session.getNotes());
+
+			for(Note n : session.getNotes()){
+				em.persist(n);
+			}
+			
+			managedSession.getNotes().addAll(session.getNotes());
 		}
 		
 		em.persist(managedSession);
 		em.flush();
-		
+
 		return managedSession;
 	}
 

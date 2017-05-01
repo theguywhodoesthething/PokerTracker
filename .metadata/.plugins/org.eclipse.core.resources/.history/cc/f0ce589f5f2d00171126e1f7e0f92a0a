@@ -1,0 +1,20 @@
+<form>
+<h1>Started at:</h1><input type="text" ng-model="vm.session.startTime" default="vm.session.startTime | date:'short'">
+<h1>Ended at:</h1><input type="text" ng-model="vm.session.endTime" default="vm.session.endTime | date:'short'">
+<h1>Buy in:</h1><input type="number" ng-model="vm.session.buyIn" default="vm.session.buyIn">
+<h1>Cash out:</h1><input type="number" ng-model="vm.session.cashOut" default="vm.session.cashOut">
+<h1>Game:</h1><input type="text" ng-model="vm.session.game" default="vm.session.game'">
+<h1>Location:</h1><input type="text" ng-model="vm.session.location" default="vm.session.location">
+<div ng-show="!vm.isTournament">
+<h1>Blinds:</h1><input type="text" ng-model="vm.session.blinds" default="vm.session.blinds">
+</div>
+<div ng-show="vm.isTournament">
+<h1>Finished in the Money:</h1><input type="checkbox" ng-model="vm.session.tournament.inMoney" default="vm.session.tournament.inMoney">
+<h1>Number of Players:</h1><input type="number" ng-model="vm.session.tournament.numberPlayers" default="vm.session.tournament.numberPlayers">
+<h1>Place Finished:</h1><input type="number" ng-model="vm.session.tournament.placeFinished" default="vm.session.tournament.placeFinished">
+<h1>Starting Stack:</h1><input type="number" ng-model="vm.session.tournament.startingStack" default="vm.session.tournament.startingStack">
+</div>
+<button  class="btn btn-danger btn-lg" type="button" ng-click="vm.deleteSession()">Delete Session</button>
+<button  class="btn btn-primary btn-lg" type="button" ng-click="vm.saveSession()">Save Changes</button>
+<button  class="btn btn-primary btn-lg" type="button" ng-click="vm.revertSession()">Clear Changes</button>
+</form>

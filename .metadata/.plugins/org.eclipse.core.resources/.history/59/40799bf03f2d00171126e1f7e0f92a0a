@@ -1,0 +1,3 @@
+<div class="container-fluid">
+<button type="button" ng-click="vm.startNewSession()">Start a New Session</button>
+</div>

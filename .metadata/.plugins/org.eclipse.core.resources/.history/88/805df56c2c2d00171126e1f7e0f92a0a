@@ -1,0 +1,22 @@
+angular.module('pokerTracker').component('sessionTracker',{
+	templateUrl : "app/pokerTracker/sessionTracker/sessionTracker.component.html",
+	controller : function(trackerService, $routeParams) {
+		var vm = this;
+		
+		vm.session = {};
+
+        vm.reload = function() {
+        	trackerService.show($routeParams.id).then(function(res){
+        		vm.activeSessions = res.data;
+        		if(vm.activeSessions.length < 1){
+        			vm.noActiveSessions = true;
+        		}
+        	});
+        };
+        
+        vm.reload();
+		
+		
+	},
+	controllerAs: 'vm'
+});

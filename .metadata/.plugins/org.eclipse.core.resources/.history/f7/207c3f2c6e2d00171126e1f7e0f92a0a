@@ -1,0 +1,44 @@
+body { 
+    padding-top: 65px; 
+}
+
+.clickable {
+	cursor: pointer;
+}
+
+.sumDiv {
+	margin: auto;
+	max-width: 90%;
+	text-align: right;
+}
+
+.trHead {
+	background-color: #cfe5ec;
+}
+
+.tableDiv {
+	margin: auto;
+	max-width: 95%;
+}
+
+.btnGrpDiv {
+	margin: auto;
+	max-width: 95%;	
+}
+
+em, .checkDiv {
+	font-weight: bold;
+}
+
+#newSesBtn {
+  display:block;
+  height: 300px;
+  width: 300px;
+  border-radius: 50%;
+  border: 1px solid red;
+}
+
+.formDiv {
+	margin: auto;
+	max-width: 70%;
+}

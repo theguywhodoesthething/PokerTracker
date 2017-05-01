@@ -1,0 +1,1 @@
+<h1>{{vm.session.startTime}}</h1>

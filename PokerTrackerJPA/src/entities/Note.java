@@ -1,6 +1,5 @@
 package entities;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -19,9 +18,6 @@ public class Note {
 
 	private String text;
 	private String timestamp;
-
-	@Column(name = "current_stack")
-	private int currentStack;
 
 	@ManyToOne
 	@JoinColumn(name = "session_id")
@@ -44,14 +40,6 @@ public class Note {
 		this.timestamp = timestamp;
 	}
 
-	public int getCurrentStack() {
-		return currentStack;
-	}
-
-	public void setCurrentStack(int currentStack) {
-		this.currentStack = currentStack;
-	}
-
 	public Session getSession() {
 		return session;
 	}
@@ -62,6 +50,11 @@ public class Note {
 
 	public int getId() {
 		return id;
+	}
+
+	@Override
+	public String toString() {
+		return "Note [id=" + id + ", text=" + text + ", timestamp=" + timestamp + "]";
 	}
 
 }

@@ -1,0 +1,11 @@
+<h1>{{vm.session.startTime}}</h1>
+<h1>{{vm.session.endTime}}</h1>
+<h1>{{vm.session.buyIn}}</h1>
+<h1>{{vm.session.cashOut}}</h1>
+<h1>{{vm.session.game}}</h1>
+<h1>{{vm.session.location}}</h1>
+<h1 ng-show="vm.tournament">{{vm.session.blinds}}</h1>
+<h1>{{vm.session.startTime}}</h1>
+<h1>{{vm.session.startTime}}</h1>
+<h1>{{vm.session.startTime}}</h1>
+<h1>{{vm.session.startTime}}</h1>

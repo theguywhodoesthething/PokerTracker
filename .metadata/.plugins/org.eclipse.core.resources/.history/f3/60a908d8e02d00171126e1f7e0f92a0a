@@ -1,0 +1,27 @@
+<div class="container">
+<h4>Summary:</h4>
+<ul>
+<li>Started at: {{(vm.session.buyIn - vm.session.cashOut) | currency}}</li>
+<li>Started at: {{vm.session.startTime | date:'medium'}}</li>
+<li>Started at: {{vm.session.startTime | date:'medium'}}</li>
+<li>Ended at: {{vm.session.endTime | date:'medium'}}</li>
+<li>Buy in: {{vm.session.buyIn}}</li>
+<li>Cash out: {{vm.session.cashOut}}</li>
+<li>Game: {{vm.session.game}}</li>
+<li>Location: {{vm.session.location}}</li>
+<li ng-show="!vm.isTournament">Blinds: {{vm.session.blinds}}</li>
+<li ng-show="vm.isTournament">Finished in the Money: {{vm.session.tournament.inMoney ? 'Yes' : 'No'}}</li>
+<li ng-show="vm.isTournament">Number of Players: {{vm.session.tournament.numberPlayers}}</li>
+<li ng-show="vm.isTournament">Place Finished: {{vm.session.tournament.placeFinished}}</li>
+<li ng-show="vm.isTournament">Starting Stack: {{vm.session.tournament.startingStack}}</li>
+</ul><br>
+<h4>Notes:</h4>
+<ul>
+<div ng-repeat="n in vm.session.notes">
+<li>{{n.timestamp | date:'short'}}: {{n.text}}</li>
+</div>
+</ul><br>
+<div class="text-center">
+<button type="button" class="btn btn-primary btn-lg" ng-click="vm.editSession()">Edit Session</button>
+</div>
+</div>

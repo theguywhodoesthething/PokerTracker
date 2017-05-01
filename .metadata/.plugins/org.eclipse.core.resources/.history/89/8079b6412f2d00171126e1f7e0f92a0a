@@ -1,0 +1,19 @@
+angular.module('pokerTracker').component('sessionTracker',{
+	templateUrl : "app/pokerTracker/sessionTracker/sessionTracker.component.html",
+	controller : function(trackerService, $routeParams) {
+		var vm = this;
+		
+		vm.session = {};
+
+        vm.reload = function() {
+        	trackerService.show($routeParams.id).then(function(res){
+        		vm.session = res.data;
+        	});
+        };
+        
+        vm.reload();
+		
+		
+	},
+	controllerAs: 'vm'
+});
