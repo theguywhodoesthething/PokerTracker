@@ -21,7 +21,7 @@ When opening the app, the user lands at a page with a simple nav bar and a butto
 ## How to Execute
 - The web-app is hosted on my AWS server:
 <a href="http://52.34.71.100:8080/PokerTracker/#/">Poker Tracker</a>
-- Download the entire program as a .war file
+- Download the entire program as a .war file:
 <a href="https://github.com/theguywhodoesthething/PokerTracker/blob/master/PokerTracker.war">PokerTracker.war</a>
 
 ## Class Structure and Database Overview
@@ -34,8 +34,7 @@ When opening the app, the user lands at a page with a simple nav bar and a butto
 - Angular
 - Bootstrap
 - Java
-- Java
-- Persistent API
+- Java Persistence API
 - Spring MVC and Spring STS
 - Gradle Managed Dependencies
 - MySQL and MySQL Workbench
